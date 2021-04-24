@@ -1,4 +1,3 @@
- <?php echo $map['js']; ?>
  <!-- Begin Page Content -->
  <div class="container-fluid">
 

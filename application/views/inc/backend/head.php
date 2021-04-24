@@ -11,7 +11,7 @@
 
     <title><?php echo $title; ?> | <?php echo $nama_website->nama_website; ?></title>
 
-    <link rel="shortcut icon" href="<?= base_url('assets/img/' . $nama_website->logo);?>">
+    <link rel="shortcut icon" href="<?= base_url('assets/img/' . $nama_website->logo); ?>">
 
     <!-- Custom fonts for this template-->
     <link href="<?= base_url(); ?>assets/sb_admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -26,7 +26,6 @@
 
     <script src="<?= base_url(); ?>assets/sb_admin/vendor/jquery/jquery.min.js"></script>
     <!-- <script src="<?= base_url(); ?>assets/sweet_alert/sweetalert.min.js"></script> -->
-
-
-
+    <!-- js maps -->
+    <?php echo $map['js']; ?>
 </head>

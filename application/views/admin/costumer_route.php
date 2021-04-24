@@ -1,4 +1,3 @@
-    <?php if (isset($map['js'])) echo $map['js']; ?>
     <script type="text/javascript">
         var centreGot = false;
     </script>

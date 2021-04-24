@@ -57,14 +57,81 @@
 <!-- Page level custom scripts -->
 <script src="<?= base_url(); ?>assets/sb_admin/js/demo/datatables-demo.js"></script>
 <script>
+    // untuk isi form 
     function setMapToForm(latitude, longitude) {
         $('input[name="latitude"]').val(latitude);
         $('input[name="longitude"]').val(longitude);
     }
 
-    function setMapToForm1(latitude, longitude) {
-        $('input[name="latitude"]').val(latitude);
-        $('input[name="longitude"]').val(longitude);
+    // ganti lokasi saat drag
+    function newLocationDrag(newLat, newLng) {
+        map.setCenter({
+            lat: newLat,
+            lng: newLng
+        });
+
+        // lempar newLat dan new Lng ke setMapToForm
+        setMapToForm(newLat, newLng);
+        // animasi
+        map.panTo(map.getCenter());
+    }
+
+    // untuk ganti lokasi marker saat click
+    function newLocationClick(newLat, newLng) {
+        // set center map
+        map.setCenter({
+            lat: newLat,
+            lng: newLng
+        });
+        // set marker posisi
+        // marker_van.setPosition(new google.maps.LatLng(newLat, newLng));
+
+        // lempar newLat dan new Lng ke setMapToForm
+        setMapToForm(newLat, newLng);
+
+        // set marker posisi ditengah
+        marker_van.setPosition(map.getCenter());
+
+        // set zoom 
+        map.setZoom(14);
+        // animasi 
+        map.panTo(map.getCenter());
+    }
+
+    // function newLocationDragMap() {
+    //     var latLng = map.getCenter();
+    //     setMapToForm(latLng.lat(), latLng.lng());
+    //     marker_van.setPosition(latLng);
+    // }
+
+    function createMarker_map2(markerOptions) {
+        deleteOneMarker();
+        var marker = new google.maps.Marker(markerOptions);
+        markers_map.push(marker);
+        lat_longs_map.push(marker.getPosition());
+        return marker;
+    }
+
+    function deleteOneMarker() {
+        markers_map[1].setMap(null);
+        markers_map[1].setMap(map);
+    }
+
+    function deleteMarkers() {
+        clearMarkers();
+        markers_map = [];
+    }
+
+    function clearMarkers() {
+        setMapOnAll(null);
+    }
+
+    // Sets the map on all markers in the array.
+    function setMapOnAll(map) {
+        console.log(markers_map.length);
+        for (let i = 0; i < markers_map.length; i++) {
+            markers_map[i].setMap(map);
+        }
     }
 </script>
 
